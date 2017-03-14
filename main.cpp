@@ -1,8 +1,8 @@
 /***
- * SAVIOR - Figther spaceship game using SDL2 libraries.
+ * SAVIOR SHIP- Figther spaceship game using SDL2 libraries.
  * Just for fun. Please enjoy...!!!
  *
- * savior is a free game: you can redistribute it and/or modify it under the terms of the GNU General Public License as
+ * savior-ship is a free game: you can redistribute it and/or modify it under the terms of the GNU General Public License as
  * published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
  * Savior is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
  * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
@@ -10,7 +10,6 @@
  * See COPYING for a copy of the GNU General Public License. If not, see http://www.gnu.org/licenses/.
  *
  * @author Lahiru Pathirage <lpsandaruwan@gmail.com> 10/03/2017
- *
  ***/
 
 #include <SDL.h>
@@ -18,10 +17,14 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <random>
 
 #include "src/PlayerShip.h"
 #include "src/TextureWrapper.h"
 #include "src/rapidxml_utils.hpp"
+#include "src/EnemyShip.h"
+#include "src/collisionCheck.h"
+#include "src/Weapon.h"
 
 
 // screen size
@@ -34,6 +37,8 @@ bool initialize();
 
 // prepare media files
 bool prepareMediaFiles();
+
+int generateRandomNumber(int min, int max);
 
 // free memory on application exit
 void close();
@@ -136,6 +141,15 @@ bool prepareMediaFiles()
     return status;
 }
 
+int generateRandomNumber(int min, int max)
+{
+    std::random_device randomDevice;
+    std::mt19937 eng(randomDevice());
+    std::uniform_int_distribution<> distr(min, max);
+
+    return distr(eng);
+}
+
 int main(int argc, char* args[])
 {
     if(!initialize())
@@ -150,38 +164,49 @@ int main(int argc, char* args[])
         }
         else
         {
-            bool mainLoopFlag = false;
+            bool mainLoopFlag = true;
 
             SDL_Event e;
 
-            // prepare player ship
+            // player ship object
             Object *playerShipObject;
-            PlayerShip playerShip(&objectClips[192].w, &objectClips[192].h);
+            PlayerShip playerShip(&objectClips[206]);
             playerShipObject = &playerShip;
 
+            // prepare player ship object
             playerShipObject->setAxisVelocity(5);
-            playerShipObject->setPosition(200, 300);
+            playerShipObject->setPosition(650, 650);
 
-            while(!mainLoopFlag)
+            // random object generation
+
+
+
+
+            while(mainLoopFlag)
             {
+                // clear screen
+                SDL_SetRenderDrawColor(globalRenderer, 0, 0, 0, 0);
+                SDL_RenderClear(globalRenderer);
+
+                playerShipObject->move(&SCREEN_WIDTH, &SCREEN_HEIGHT);
+
                 while(SDL_PollEvent(&e) != 0)
                 {
                     if(e.type == SDL_QUIT)
                     {
-                        mainLoopFlag = true;
+                        mainLoopFlag = false;
                     }
 
                     playerShipObject->handleEvent(e);
+
+                    if(e.key.keysym.sym == SDLK_SPACE && e.key.repeat == 0 && e.type == SDL_KEYDOWN)
+                    {
+
+                    }
                 }
 
-                playerShipObject->move(&SCREEN_WIDTH, &SCREEN_HEIGHT);
-
-                // clear screen
-                SDL_SetRenderDrawColor(globalRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
-                SDL_RenderClear(globalRenderer);
-
                 // render objects
-                globalTextureWrapper.render(globalRenderer, playerShip.X, playerShip.Y, &objectClips[192]);
+                globalTextureWrapper.render(globalRenderer, playerShip.X, playerShip.Y, playerShip.spriteClip);
 
                 // update window
                 SDL_RenderPresent(globalRenderer);

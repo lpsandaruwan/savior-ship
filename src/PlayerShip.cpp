@@ -5,10 +5,30 @@
 #include "PlayerShip.h"
 
 
-PlayerShip::PlayerShip(int* width, int* height): Object(width, height)
+PlayerShip::PlayerShip(SDL_Rect* clip): Object(clip)
 {
     velocityX = 0;
     velocityY = 0;
+}
+
+PlayerShip::~PlayerShip() {}
+
+void PlayerShip::move(const int* SCR_WIDTH, const int* SCR_HEIGHT)
+{
+    // move ship
+    X += velocityX;
+    Y += velocityY;
+
+    // stop if ship meets frame edges
+    if((X < 0) || (X + spriteClip->w) > *SCR_WIDTH)
+    {
+        X -= velocityX;
+    }
+
+    if((Y < 0) || (Y + spriteClip->h) > *SCR_HEIGHT)
+    {
+        Y -= velocityY;
+    }
 }
 
 void PlayerShip::handleEvent(SDL_Event &e)
@@ -50,23 +70,5 @@ void PlayerShip::handleEvent(SDL_Event &e)
                 velocityX -= axis_velocity;
                 break;
         }
-    }
-}
-
-void PlayerShip::move(const int* SCR_WIDTH, const int* SCR_HEIGHT)
-{
-    // move ship
-    X += velocityX;
-    Y += velocityY;
-
-    // stop if ship meets frame edges
-    if((X < 0) || (X + object_width) > *SCR_WIDTH)
-    {
-        X -= velocityX;
-    }
-
-    if((Y < 0) || (Y + object_height) > *SCR_HEIGHT)
-    {
-        Y -= velocityY;
     }
 }

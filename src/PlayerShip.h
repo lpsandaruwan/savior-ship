@@ -13,11 +13,12 @@
 class PlayerShip: public Object
 {
     public:
-        // class and function definitions
-        PlayerShip(int* width, int* height);
+        // constructors and function definitions
+        PlayerShip(SDL_Rect* clip);
+        ~PlayerShip();
 
-        void handleEvent(SDL_Event& e);
         void move(const int* SCR_WIDTH, const int* SCR_HEIGHT);
+        void handleEvent(SDL_Event& e);
 
     private:
         int velocityX, velocityY;

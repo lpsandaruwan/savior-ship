@@ -5,11 +5,12 @@
 #include "Object.h"
 
 
-Object::Object(int* width, int* height)
+Object::Object(SDL_Rect* clip)
 {
-    object_width = *width;
-    object_height = *height;
+    spriteClip = clip;
 }
+
+Object::~Object() {}
 
 void Object::setAxisVelocity(int velocity)
 {

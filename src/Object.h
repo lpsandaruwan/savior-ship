@@ -11,17 +11,21 @@
 class Object
 {
     public:
+        // destroy when conditions met
+        bool destroyFlag = false;
+
         // offsets
         int X, Y;
-
-        // dimensions of an object
-        int object_width, object_height;
 
         // axis velocity of an object
         int axis_velocity;
 
-        // class and function definitions
-        Object(int* object_width, int* object_height);
+        // object sprite clip
+        SDL_Rect* spriteClip;
+
+        // constructors and function definitions
+        Object(SDL_Rect* clip);
+        virtual ~Object();
 
         void setAxisVelocity(int velocity);
         void setPosition(int x, int y);

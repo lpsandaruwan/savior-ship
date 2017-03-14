@@ -116,7 +116,6 @@
 	<SubTexture name="laserBlue10.png" x="740" y="724" width="37" height="37"/>
 	<SubTexture name="laserBlue11.png" x="698" y="795" width="38" height="37"/>
 	<SubTexture name="laserBlue12.png" x="835" y="695" width="13" height="57"/>
-	<SubTexture name="laserBlue13.png" x="856" y="869" width="9" height="57"/>
 	<SubTexture name="laserBlue14.png" x="842" y="206" width="13" height="57"/>
 	<SubTexture name="laserBlue15.png" x="849" y="480" width="9" height="57"/>
 	<SubTexture name="laserBlue16.png" x="843" y="62" width="13" height="54"/>
