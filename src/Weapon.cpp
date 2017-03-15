@@ -19,15 +19,10 @@ void Weapon::fire(const int *SCR_WIDTH, const int *SCR_HEIGHT)
     X += velocityX;
     Y += velocityY;
 
-    // stop if ship meets frame edges
-    if((X < 0) || (X - spriteClip->w) > *SCR_WIDTH)
+    if((Y < 0) || Y > *SCR_HEIGHT)
     {
-        X -= velocityX;
-    }
-
-    if((Y < 0) || (Y - spriteClip->h) > *SCR_HEIGHT)
-    {
-        Y -= velocityY;
+        Y = 0;
+        inProgress = false;
     }
 
     velocityY = -axis_velocity;

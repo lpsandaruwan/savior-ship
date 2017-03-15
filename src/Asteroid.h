@@ -8,7 +8,7 @@
 #define SAVIOR_ASTEROID_H
 
 
-class Asteroid: Object
+class Asteroid: public Object
 {
     public:
         // constructors and function definitions

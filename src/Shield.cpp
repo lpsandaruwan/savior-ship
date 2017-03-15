@@ -23,17 +23,15 @@ void Shield::move(const int *SCR_WIDTH, const int *SCR_HEIGHT)
     if((X + spriteClip->w * 2 < 0) || (X - spriteClip->w) > *SCR_WIDTH)
     {
         X -= velocityX;
-        destroyFlag = true;
     }
 
     if((Y + spriteClip->h * 2 < 0) || (Y - spriteClip->h) > *SCR_HEIGHT)
     {
         Y -= velocityY;
-        destroyFlag = true;
     }
 }
 
-void Shield::moveWithPlayerShip()
+void Shield::setAutoMove(int identifier)
 {
 
 }

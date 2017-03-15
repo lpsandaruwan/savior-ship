@@ -22,18 +22,17 @@ void EnemyShip::move(const int *SCR_WIDTH, const int *SCR_HEIGHT)
     // stop if ship meets frame edges
     if((X + spriteClip->w * 2 < 0) || (X - spriteClip->w) > *SCR_WIDTH)
     {
-        X -= velocityX;
-        destroyFlag = true;
+        setAutoMove(-1);
     }
 
-    if((Y + spriteClip->h * 2 < 0) || (Y - spriteClip->h) > *SCR_HEIGHT)
+    if((Y < -500) || (Y + spriteClip->h) > *SCR_HEIGHT)
     {
-        Y -= velocityY;
-        destroyFlag = true;
+        setAutoMove(-1);
+        inProgress = false;
     }
 }
 
-void EnemyShip::setAutoPilot(int identifier)
+void EnemyShip::setAutoMove(int identifier)
 {
    // identifier 0 -set X axis velocity, 1 -set Y axis velocity, 2 -set both
     switch(identifier)

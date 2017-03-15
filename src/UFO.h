@@ -8,7 +8,7 @@
 #define SAVIOR_UFO_H
 
 
-class UFO: Object
+class UFO: public Object
 {
     public:
         // constructors and function definitions
@@ -16,7 +16,7 @@ class UFO: Object
         ~UFO();
 
         void move(const int* SCR_WIDTH, const int* SCR_HEIGHT);
-        void setAutoPilot(int identifier);
+        void setAutoMove(int identifier);
 
     private:
         int velocityX, velocityY;

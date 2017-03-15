@@ -16,7 +16,7 @@ class EnemyShip: public Object
         ~EnemyShip();
 
         void move(const int* SCR_WIDTH, const int* SCR_HEIGHT);
-        void setAutoPilot(int identifier);
+        void setAutoMove(int identifier);
 
     private:
         int velocityX, velocityY;

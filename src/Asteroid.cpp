@@ -22,14 +22,13 @@ void Asteroid::move(const int *SCR_WIDTH, const int *SCR_HEIGHT)
     // stop if ship meets frame edges
     if((X + spriteClip->w * 2 < 0) || (X - spriteClip->w) > *SCR_WIDTH)
     {
-        X -= velocityX;
-        destroyFlag = true;
+        setAutoMove(-1);
     }
 
-    if((Y + spriteClip->x * 2 < 0) || (Y - spriteClip->x) > *SCR_HEIGHT)
+    if((Y < -500) || (Y - spriteClip->x) > *SCR_HEIGHT)
     {
-        Y -= velocityY;
-        destroyFlag = true;
+        setAutoMove(-1);
+        inProgress = false;
     }
 }
 
@@ -39,18 +38,18 @@ void Asteroid::setAutoMove(int identifier)
     switch(identifier)
     {
         case 0:
-            velocityX += axis_velocity;
+            velocityX = axis_velocity;
             break;
         case 1:
-            velocityY += axis_velocity;
+            velocityY = axis_velocity;
             break;
         case 2:
-            velocityX += axis_velocity;
-            velocityY += axis_velocity;
+            velocityX = axis_velocity;
+            velocityY = axis_velocity;
             break;
         default:
-            velocityX -= axis_velocity;
-            velocityY -= axis_velocity;
+            velocityX = 0;
+            velocityY = 0;
             break;
     }
 }

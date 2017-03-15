@@ -16,7 +16,7 @@ class Shield: Object
         ~Shield();
 
         void move(const int* SCR_WIDTH, const int* SCR_HEIGHT);
-        void moveWithPlayerShip();
+        void setAutoMove(int identifier);
 
     private:
         int velocityX, velocityY;

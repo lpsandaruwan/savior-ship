@@ -13,6 +13,8 @@
 class PlayerShip: public Object
 {
     public:
+        int health = 100;
+
         // constructors and function definitions
         PlayerShip(SDL_Rect* clip);
         ~PlayerShip();

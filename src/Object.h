@@ -11,8 +11,8 @@
 class Object
 {
     public:
-        // destroy when conditions met
-        bool destroyFlag = false;
+        // object in processing flag
+        bool inProgress = false;
 
         // offsets
         int X, Y;
@@ -30,6 +30,7 @@ class Object
         void setAxisVelocity(int velocity);
         void setPosition(int x, int y);
 
+        virtual void setAutoMove(int identifier){}
         virtual void handleEvent(SDL_Event& e);
         virtual void move(const int* SCR_WIDTH, const int* SCR_HEIGHT);
 };
