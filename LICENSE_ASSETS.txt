@@ -1,7 +1,7 @@
+SAVIOR - Assets licences
+
 
 ###############################################################################
-SAVIOR - Assets licence
-
 
 	Space Shooter (Redux, plus fonts and sounds) by Kenney Vleugels (www.kenney.nl)
 
@@ -12,5 +12,20 @@ SAVIOR - Assets licence
 
 	You may use these graphics in personal and commercial projects.
 	Credit (Kenney or www.kenney.nl) would be nice but is not mandatory.
+
+###############################################################################
+
+
+
+###############################################################################
+
+    airship music mp3 by Bart Kelsey
+
+        ------------------------------
+
+		            License (CC0)
+	   https://creativecommons.org/licenses/by-sa/3.0/
+
+    Credit Bart Kelsey (http://opengameart.org/users/bart)
 
 ###############################################################################

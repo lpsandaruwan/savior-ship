@@ -1,2 +1,7 @@
 .directory
 .idea
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+savior
