@@ -3,11 +3,11 @@
 An opensource fightership game using SDL2.
 
 
-####Requirements
+#### Requirements
 Make sure you have installed SDL2 libraries. If not see [https://www.libsdl.org/download-2.0.php](https://www.libsdl.org/download-2.0.php)
 
 
-####Build in Linux
+#### Build in Linux
 Clone repository and using cmake do,
 ```
 git clone https://github.com/lpsandaruwan/savior-ship.git
@@ -23,4 +23,5 @@ sudo make install
 ```
 
 From application launcher menu search for "Savior Ship".
+
 Enjoy...!
