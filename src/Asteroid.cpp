@@ -2,7 +2,7 @@
 // Created by lpsandaruwan on 3/13/17.
 //
 
-#include "Asteroid.h"
+#include "../include/Asteroid.h"
 
 
 Asteroid::Asteroid(SDL_Rect* clip): Object(clip)

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=0.1.0
+Name=Savior Ship
+Icon=/usr/local/savior_ship/assets/graphics/icon.png
+Exec=sh /usr/local/savior_ship/savior.sh
+Comment=A SDL2 Space Shooter game
+Categories=Games;
+Type=Application
+Terminal=false

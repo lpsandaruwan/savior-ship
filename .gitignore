@@ -5,3 +5,5 @@ CMakeFiles/
 Makefile
 cmake_install.cmake
 savior
+CPackConfig.cmake
+CPackSourceConfig.cmake

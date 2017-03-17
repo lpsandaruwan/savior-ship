@@ -2,7 +2,7 @@
 // Created by lpsandaruwan on 3/10/17.
 //
 
-#include "TextureWrapper.h"
+#include "../include/TextureWrapper.h"
 
 
 TextureWrapper::TextureWrapper()

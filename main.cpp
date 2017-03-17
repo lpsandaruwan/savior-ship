@@ -23,14 +23,14 @@
 #include <thread>
 #include <unistd.h>
 
-#include "src/PlayerShip.h"
-#include "src/TextureWrapper.h"
-#include "src/rapidxml_utils.hpp"
-#include "src/EnemyShip.h"
-#include "src/collisionCheck.h"
-#include "src/Weapon.h"
-#include "src/Asteroid.h"
-#include "src/UFO.h"
+#include "include/PlayerShip.h"
+#include "include/TextureWrapper.h"
+#include "include/rapidxml_utils.hpp"
+#include "include/EnemyShip.h"
+#include "include/collisionCheck.h"
+#include "include/Weapon.h"
+#include "include/Asteroid.h"
+#include "include/UFO.h"
 
 
 // screen size
@@ -237,6 +237,15 @@ bool prepareMediaFiles()
     return status;
 }
 
+int generateRandomNumber(int min, int max)
+{
+    std::random_device randomDevice;
+    std::mt19937 eng(randomDevice());
+    std::uniform_int_distribution<> distr(min, max);
+
+    return distr(eng);
+}
+
 void delayDestroyObject(Object* destroyedObject)
 {
     usleep(100000);
@@ -266,13 +275,23 @@ void modifyRenderObjectList(Object* renderList[], Object* objectList[], SDL_Even
     }
 }
 
-int generateRandomNumber(int min, int max)
+void close()
 {
-    std::random_device randomDevice;
-    std::mt19937 eng(randomDevice());
-    std::uniform_int_distribution<> distr(min, max);
+    // free memory on loaded media objects
+    globalTextureWrapper.free();
+    backgroundWrapper.free();
 
-    return distr(eng);
+    // destroy window
+    SDL_DestroyRenderer(globalRenderer);
+    SDL_DestroyWindow(globalWindow);
+    globalWindow = NULL;
+    globalRenderer = NULL;
+
+    // quit initialize initialized subsystems
+    IMG_Quit();
+    TTF_Quit();
+    Mix_Quit();
+    SDL_Quit();
 }
 
 int main(int argc, char* args[])

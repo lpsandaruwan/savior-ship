@@ -2,7 +2,7 @@
 // Created by lpsandaruwan on 3/13/17.
 //
 
-#include "UFO.h"
+#include "../include/UFO.h"
 
 
 UFO::UFO(SDL_Rect* clip): Object(clip)

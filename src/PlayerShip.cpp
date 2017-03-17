@@ -2,7 +2,7 @@
 // Created by lpsandaruwan on 3/10/17.
 //
 
-#include "PlayerShip.h"
+#include "../include/PlayerShip.h"
 
 
 PlayerShip::PlayerShip(SDL_Rect* clip): Object(clip)

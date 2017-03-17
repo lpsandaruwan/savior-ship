@@ -2,7 +2,7 @@
 // Created by lpsandaruwan on 3/13/17.
 //
 
-#include "EnemyShip.h"
+#include "../include/EnemyShip.h"
 
 
 EnemyShip::EnemyShip(SDL_Rect* clip): Object(clip)

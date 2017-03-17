@@ -2,7 +2,7 @@
 // Created by lpsandaruwan on 3/14/17.
 //
 
-#include "Weapon.h"
+#include "../include/Weapon.h"
 
 
 Weapon::Weapon(SDL_Rect* clip): Object(clip)

@@ -2,7 +2,7 @@
 // Created by lpsandaruwan on 3/12/17.
 //
 
-#include "Object.h"
+#include "../include/Object.h"
 
 
 Object::Object(SDL_Rect* clip)

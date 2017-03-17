@@ -2,7 +2,7 @@
 // Created by lpsandaruwan on 3/13/17.
 //
 
-#include "Shield.h"
+#include "../include/Shield.h"
 
 
 Shield::Shield(SDL_Rect* clip): Object(clip)
