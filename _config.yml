@@ -1,0 +1,27 @@
+# Single Project Page
+
+title: SAVIOR SHIP
+email: lpsandaruwan@gmail.com
+description: > # this means to ignore newlines until "baseurl:"
+  Savior Ship is a 2D simple cross platform opensource game built using C++ and SDL2 libraries. Shoot the UFOs,
+  shoot the enemy ships and stay away from asteroids. Save yourself and score more!!!
+  Savior ship releases are available for both Linux and Windows as deb/rpm/exe.
+  Enjoy!!!
+
+
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+
+# Social media links
+facebook_username: skyblue1992
+github_username:  lpsandaruwan
+twitter_username: lpsandaruwan
+
+# Build settings
+markdown: kramdown
+
+gems:
+  - jekyll-feed
+exclude:
+  - Gemfile
+  - Gemfile.lock
