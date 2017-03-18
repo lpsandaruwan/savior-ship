@@ -7,3 +7,7 @@ cmake_install.cmake
 savior
 CPackConfig.cmake
 CPackSourceConfig.cmake
+
+_site
+Gemfile
+Gemfile.lock
