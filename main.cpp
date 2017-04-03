@@ -151,13 +151,14 @@ bool initialize()
     return status;
 }
 
+// load all the images/audio files
 bool prepareMediaFiles()
 {
     bool startFlag = false;
     bool status = true;
 
     // load background media
-    if(!backgroundWrapper.loadGraphicsFile(globalRenderer, "./assets/graphics/background.jpg"))
+    if(!backgroundWrapper.loadGraphicsFile(globalRenderer, "./assets/graphics/background.png"))
     {
         std::cout << "Failed to load background image " << std::endl;
         status = false;
@@ -237,6 +238,7 @@ bool prepareMediaFiles()
     return status;
 }
 
+// generate a random integer number between two integers
 int generateRandomNumber(int min, int max)
 {
     std::random_device randomDevice;
@@ -246,12 +248,14 @@ int generateRandomNumber(int min, int max)
     return distr(eng);
 }
 
+// used to display destroyed object image for a while
 void delayDestroyObject(Object* destroyedObject)
 {
     usleep(100000);
     destroyedObject->inProgress = false;
 }
 
+// modify appearing places enemy objects offsets
 void modifyRenderObjectList(Object* renderList[], Object* objectList[], SDL_Event* e)
 {
     while(true)
@@ -551,7 +555,7 @@ int main(int argc, char* args[])
 
                 // update window
                 SDL_RenderPresent(globalRenderer);
-                SDL_Delay(0);
+                SDL_Delay(10);
             }
         }
     }
