@@ -14,3 +14,5 @@ Gemfile.lock
 install_manifest.txt
 _CPack_Packages/
 savior_ship-0.1.1-1.x86_64.deb
+build
+vcpkg
