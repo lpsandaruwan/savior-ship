@@ -1,5 +1,5 @@
 /***
- * SAVIOR SHIP- Figther spaceship game using SDL2 libraries.
+ * SAVIOR SHIP - Fighter spaceship game using SDL2 libraries.
  * Just for fun. Please enjoy...!!!
  *
  * savior-ship is a free game: you can redistribute it and/or modify it under the terms of the GNU General Public License as
@@ -21,7 +21,12 @@
 #include <sstream>
 #include <random>
 #include <thread>
-#include <unistd.h>
+#ifdef _WIN32
+	#include <windows.h>
+	#include "include/usleep.h"
+#else
+	#include <unistd.h>
+#endif
 
 #include "include/PlayerShip.h"
 #include "include/TextureWrapper.h"
@@ -198,7 +203,7 @@ bool prepareMediaFiles()
     }
 
     // load music files
-    globalMusic = Mix_LoadMUS("./assets/sounds/airship.mp3");
+    globalMusic = Mix_LoadMUS("./assets/sounds/airship.ogg");
     if(globalMusic == NULL)
     {
         std::cout << "Failed to load sound file  " << Mix_GetError() << std::endl;
@@ -429,6 +434,11 @@ int main(int argc, char* args[])
                 while(SDL_PollEvent(&e) != 0)
                 {
                     if(e.type == SDL_QUIT)
+                    {
+                        mainLoopFlag = false;
+                    }
+
+                    if(e.key.keysym.sym == SDLK_ESCAPE && e.type == SDL_KEYDOWN)
                     {
                         mainLoopFlag = false;
                     }
