@@ -8,7 +8,6 @@
 :: C++ Core features.
 
 :: Cmake is available from https://cmake.org/
-:: Powershell comes preinstalled with Windows 10
 :: Git, the Win 10 SDK and the Win universal runtime, etc can all be installed
 :: via the individual components section of the MS Visual Studio installer.
 
@@ -44,11 +43,11 @@ SET BUILDDIR=%SCRIPTDIR%\..\build
 
 CD %SCRIPTDIR%\..\
 
-CALL %MSVSDIR%"\VC\Auxiliary\Build\vcvars64.bat"
+IF exist %MSVSDIR%"\VC\Auxiliary\Build\vcvars64.bat" ( CALL %MSVSDIR%"\VC\Auxiliary\Build\vcvars64.bat" ) ELSE ( ECHO vcvars64.bat not found. Please ensure the correct path is set inside the variable MSVSDIR. )
 
 :pullvcpkg
 
-IF exist %VCPKGDIR% (  GOTO :cleanbuild )
+IF exist %VCPKGDIR% ( GOTO :cleanbuild )
 
 MKDIR %VCPKGDIR% && CD %VCPKGDIR% && git init
 git fetch https://github.com/Microsoft/vcpkg master
@@ -63,7 +62,7 @@ CD %SCRIPTDIR%\..\
 
 :cleanbuild
 
-IF exist %BUILDDIR% (  RMDIR /Q /S "%BUILDDIR%" )
+IF exist %BUILDDIR% ( RMDIR /Q /S "%BUILDDIR%" )
 
 MKDIR %BUILDDIR% && CD %BUILDDIR%
 
@@ -76,9 +75,11 @@ cmake .. %GENERATOR% ^
 
 msbuild /m ".\savior.sln" /p:configuration=%CONFIGURATION% /p:platform=x64 /p:PlatformToolset=%TOOLSET%
 
-COPY %VCRUN% %BUILDDIR%\%CONFIGURATION%
+IF exist %VCRUN% ( COPY %VCRUN% %BUILDDIR%\%CONFIGURATION% ) ELSE ( ECHO vcruntime140_1.dll not found. Please ensure the correct path is set inside the variable VCRUN. )
 
 ECHO #
 ECHO    Build complete!
 ECHO    Successfully built binaries can be found inside the folder \build\%CONFIGURATION%
 ECHO #
+
+IF exist %BUILDDIR%\%CONFIGURATION%\savior.exe ( START /D %BUILDDIR%\%CONFIGURATION% savior.exe )

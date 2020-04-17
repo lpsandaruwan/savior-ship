@@ -11,6 +11,7 @@ Builds have been tested on both Linux and Windows 10.
 #### Build Requirements
 
 - gcc g++, clang or MSVC Compiler (depending upon your operating system)
+- cmake
 
 
 #### Build Dependencies
@@ -33,13 +34,10 @@ Once the variables have been set correctly, it should be as simple as opening a 
 issuing the command:
 
 ```
-git clone https://github.com/lpsandaruwan/savior-ship.git
-cd savior-ship\windows
-
 build.cmd
 ```
 
-Once the project has sucessfully built, you can then make your changes to the source code and run **build.cmd** again. Doing so will quickly rebuild the project's binaries for you.
+Once the project has successfully built, you can then make your changes to the source code and run **build.cmd** again. Doing so will quickly rebuild the project's binaries for you.
 
 #### Build in Linux
 
